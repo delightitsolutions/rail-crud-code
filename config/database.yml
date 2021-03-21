@@ -9,24 +9,27 @@
 # And be sure to use new-style password hashing:
 #   https://dev.mysql.com/doc/refman/5.7/en/password-hashing.html
 #
-default: &default
-  adapter: mysql2
-  encoding: utf8mb4
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: root
-  password: Admin123#
-  socket: /var/run/mysqld/mysqld.sock
 
 development:
-  <<: *default
+  adapter: mysql2
+  encoding: utf8mb4
+  username: root
+  password: Admin123#
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  socket: /var/run/mysqld/mysqld.sock
   database: test_app_1_development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
-  <<: *default
-  database: test_app_1_test
+  adapter: mysql2
+  encoding: utf8mb4
+  username: root
+  password: Admin123#
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  socket: /var/run/mysqld/mysqld.sock
+  database: test_app_1_development
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -48,7 +51,11 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
+  adapter: postgresql
+  encoding: unicode
+  # For details on connection pooling, see Rails configuration guide
+  # https://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   database: test_app_1_production
   username: test_app_1
-  password: <%= ENV['TEST_APP_1_DATABASE_PASSWORD'] %>
+  password: <%= ENV['MYAPP_DATABASE_PASSWORD'] %>
