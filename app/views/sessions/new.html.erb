@@ -1,0 +1,28 @@
+<h1 class="text-center mt-4">Log In </h4>
+<div class="container">
+
+  <%= form_with(scope: :session, class:'shadow p-3 mb-3 bg-info rounded',local: true) do |form| %>
+  <div class="row justify-content-center">
+    <div class="col-10">
+      
+      <div class="form-group row">
+        <%= form.label :email, class: 'col-2 col-form-label text-light' %>
+        <div class="col-10">
+          <%= form.email_field :email, placeholder: 'Enter your email address', class: 'form-control shadow rounded' %>
+        </div>
+          
+      </div>
+      <div class="form-group row">
+        <%= form.label :password, class: 'col-2 col-form-label text-light' %>
+        <div class="col-10">
+          <%= form.password_field :password, placeholder: 'Enter your password', class: 'form-control shadow rounded' %>
+        </div>
+          
+      </div>
+      <div class="form-group row justify-content-center">
+        <%= form.submit "Sign In", class: 'btn btn-outline-light btn-lg'%>
+      </div>
+  <% end %>
+    </div> 
+  </div>
+</div>

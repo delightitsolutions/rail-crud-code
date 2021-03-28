@@ -5,7 +5,8 @@
       
         <div class="card text-center shadow-sm  mb-5 bg-white rounded">
           <div class="card-header font-italic">
-            <%= @article.user.username%>
+            by <%= link_to @article.user.username, @article.user%>
+            <%= link_to get_gravator(@article.user, size:50),@article.user %>
           </div>
           <div class="card-body">
             
